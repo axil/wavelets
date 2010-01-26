@@ -9,12 +9,15 @@
 %Return values: t: time vector; y: signal; matrix: Sampled CWT
 %Last modified: 07.02.04, H.-G. Stark
 
-function [t,y,matrix]=mycwt(y,T,start,step,stop,wav)
+function [t,y,matrix]=mycwt(y,T,start,step,stop,wav,rep_flag)
 %close all;
 
 %Preparations
 %wav=input('Enter wavelet (in quotes): ');
 comment = '';
+if nargin<7,
+    rep_flag=0;
+end
 N=max(size(y));
 if size(y,1)>size(y,2),
     y=y'; 
@@ -55,14 +58,14 @@ for i=1:rows,
 end
 
 %Additional visualization options (surface and contour)
-rep_flag=0; %input('Surface and contour visualization (1)? ');
+%rep_flag=0; %input('Surface and contour visualization (1)? ');
 if rep_flag==1,
     figure(1);
     mesh(t-t(1),a,abs(matrix))
     xlabel('t')
     ylabel('a'); 
     title(titel);
-    pause
+%    pause
     figure(2);
     subplot(211), plot(t-t(1),y), axis tight;
     title(titel);
