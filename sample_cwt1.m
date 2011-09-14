@@ -13,3 +13,7 @@ w1=0.1; w2=0.1; w3=100;
 [t,tt,z]=mycwt(x(K-N:K+N),1,w1,w2,w3,'mymorlet',1);
 figure(2);
 plot((w1:w2:w3),abs(z(:,N)),'.-');
+
+x=[sin(0:0.1:50) sin(0:0.3:50) sin(0:0.5:50)];
+plot(x);
+[t,tt,z]=mycwt(x,1,w1,w2,w3,'mymorlet',1);
